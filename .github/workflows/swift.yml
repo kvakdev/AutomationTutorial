@@ -10,13 +10,11 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build:
+  test:
 
     runs-on: macos-latest
 
     steps:
     - uses: actions/checkout@v4
-    - name: Build
-      run: swift build -v
     - name: Run tests
-      run: swift test -v
+      run: xcodebuild test -scheme AutomationTutorial -destination 'platform=iOS Simulator,name=iPhone 15 Pro,OS=17.5' -sdk iphonesimulator 
